@@ -1,0 +1,53 @@
+[project]
+name = "app-faces"
+version = "0.1.0"
+description = "Give recognizable desktop applications their own face"
+requires-python = ">=3.14"
+dependencies = []
+
+[project.scripts]
+app-faces = "app_faces.cli:main"
+
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = ["pytest>=8", "mypy>=1.15", "ruff>=0.11"]
+
+[tool.mypy]
+python_version = "3.14"
+strict = true
+files = ["app_faces"]
+
+[[tool.mypy.overrides]]
+module = ["gi", "gi.*"]
+ignore_missing_imports = true
+
+[tool.ruff]
+target-version = "py314"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff.lint.per-file-ignores]
+# GI namespaces must be selected before importing repository modules.
+"app_faces/core.py" = ["E402"]
+"app_faces/ui.py" = ["E402"]
+"app_faces/selection.py" = ["E402"]
+
+"app_faces/onboarding.py" = ["E402"]
+"tests/integration/native_flow.py" = ["E402"]
+"tests/integration/ui_smoke.py" = ["E402"]
+"tests/fixtures/desktop_app.py" = ["E402"]
+
+[tool.hatch.build.targets.sdist]
+include = ["/app_faces", "/tests", "/scripts", "/adapters", "/docs", "/bin", "/*.md", "/install.py", "/pyproject.toml", "/uv.lock", "/backend/src", "/backend/tests", "/backend/e2e", "/backend/*.ts", "/backend/migrations", "/backend/*.json", "/backend/*.jsonc", "/backend/*.mjs", "/backend/*.md"]
+exclude = ["**/__pycache__/**", "**/*.pyc", "**/node_modules/**", "**/.dev.vars*", "**/.env*", "**/.wrangler/**"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["app_faces"]

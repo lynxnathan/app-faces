@@ -1,0 +1,43 @@
+{
+  "name": "app-faces-backend",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "dev": "wrangler dev --local",
+    "typecheck": "tsc --noEmit && tsc -p tsconfig.admin.json && tsc -p tsconfig.tests.json && tsc -p tsconfig.e2e.json",
+    "test": "vitest run tests",
+    "check": "npm run typecheck && npm test",
+    "migrate:local": "wrangler d1 migrations apply DB --local",
+    "deploy": "wrangler deploy",
+    "build": "node build.mjs",
+    "predev": "npm run build",
+    "pretest": "npm run build",
+    "predeploy": "npm run build",
+    "init:local": "node init-local.mjs",
+    "format:check": "prettier --check \"src/*.ts\" \"tests/*.ts\" \"e2e/*.ts\" \"e2e/*.mjs\" \"*.ts\" \"*.json\" \"*.jsonc\" \"*.mjs\"",
+    "test:ui": "playwright test",
+    "check:all": "npm run check && npm run test:ui"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
+    "@cloudflare/workers-types": "5.20260926.1",
+    "@playwright/test": "^1.63.0",
+    "@types/node": "26.6.3",
+    "esbuild": "0.28.2",
+    "miniflare": "4.20260730.0",
+    "prettier": "3.9.9",
+    "typescript": "7.0.2",
+    "vitest": "5.0.2",
+    "wrangler": "4.141.0"
+  },
+  "overrides": {
+    "miniflare@4.20260730.0": {
+      "sharp": "0.35.4",
+      "undici": "7.29.0"
+    }
+  }
+}

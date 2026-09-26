@@ -1,0 +1,27 @@
+# Local caches, generated assets, and build outputs
+.cache/
+.local/
+build/
+dist/
+__pycache__/
+*.pyc
+.venv/
+
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+
+# Isolated browser UI tests contain local profile/session state.
+state/firefox-e2e/
+# Screenshots stay local, including captures of the personal desktop.
+state/*.png
+state/**/*.png
+state/native-e2e/*.log
+state/*.log
+state/**/*.log
+
+# Local execution evidence, desktop captures and session data
+/state/
+.env
+.env.*
+!.env.example

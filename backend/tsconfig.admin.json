@@ -1,0 +1,6 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": { "lib": ["ES2023", "DOM"], "types": [] },
+  "include": ["src/admin.ts"],
+  "exclude": []
+}

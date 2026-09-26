@@ -1,0 +1,9 @@
+{
+  "CacheThumbnail": false,
+  "ThumbnailerVersion": 1,
+  "KPlugin": {
+    "Name": "App Faces application artwork",
+    "Description": "Offline application icons from desktop entries and App Faces choices",
+    "MimeTypes": ["application/x-executable", "application/x-pie-executable", "application/x-sharedlib", "application/vnd.appimage", "application/x-iso9660-appimage"]
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "uuid": "app-faces-dock-proof@local",
+  "name": "App Faces isolated application dock proof",
+  "description": "Test-only observer installed exclusively in a disposable GNOME session.",
+  "shell-version": ["50"],
+  "session-modes": ["user", "ubuntu"]
+}
